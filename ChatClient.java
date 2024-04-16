@@ -5,6 +5,8 @@ import java.lang.Thread;
 import java.net.*;
 import java.io.*;
 public class ChatClient{
+    // SHOULD BE DONE IF NO LINKED LIST IMPLEMNT NEEDED
+    
     public static void main(String[] args) throws IOException {
         if (args.length != 2) {
             System.err.println(
@@ -36,17 +38,13 @@ public class ChatClient{
 
 	    //Send username string to server
 	    //Fire up a ClientReceiver thread -- did not yet do this 
+        ClientReceiver clientReceiver = new ClientReceiver(clientIn);
+        clientReceiver.run();
 
-	    //Chatting below
-
-        String receivedMessage;
 	    while (clientSocket.isConnected()) {
             // might need to change to while lopp to print old messages 
 
-            //read section
-            if((receivedMessage = clientIn.readLine())!= null){
-                System.out.println(receivedMessage);
-            }
+            
             }
 
             // write section
