@@ -4,7 +4,7 @@ import java.lang.Thread;
 import java.net.*;
 import java.io.*;
 public class ClientReceiver extends Thread{
-    BufferedReader in;
+
     public void run(){
 	while(true){
 	    try{
@@ -19,6 +19,6 @@ public class ClientReceiver extends Thread{
     }
     ClientReceiver(BufferedReader in){
 	//takes the input stream from the server socket connected to client instance
-	this.in = in;
+
     }
 }

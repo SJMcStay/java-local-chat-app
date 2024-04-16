@@ -5,8 +5,24 @@ import java.net.*;
 import java.io.*;
 public class ServerInputThread extends Thread{
 
+	private String username;
+	private Socket socket;
+
     public void run(){
 	try{
+		Boolean firstMessage = true;
+		InputStream in = socket.getInputStream();
+		while (!socket.isClosed()) {
+			String message06;
+			if(firstMessage){
+				this.username = message;
+				firstMessage = false;
+			}
+
+
+
+			
+		}
 	    //Read in a line representing the username
 	    //Set the username field
 	    //Add a new socket to the static connection list
@@ -21,7 +37,10 @@ public class ServerInputThread extends Thread{
 
     public ServerInputThread(Socket clientSocket){
 	try{
-	    //Set the appropriate fields 
+		socket = clientSocket;
+
+
+	    
 	}catch(Exception e){
 	    System.out.println("ServerInputThread (Constructor)"+e);
 	    System.exit(1);
