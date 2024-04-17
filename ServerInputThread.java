@@ -11,17 +11,31 @@ public class ServerInputThread extends Thread{
     public void run(){
 	try{
 		Boolean firstMessage = true;
-		InputStream in = socket.getInputStream();
+		BufferedReader clientReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 		while (!socket.isClosed()) {
-			String message06;
-			if(firstMessage){
-				this.username = message;
-				firstMessage = false;
+			String message = clientReader.readLine() ;
+			if (message != null) {
+				if(firstMessage){
+					username = message;
+					firstMessage = false;
+					// something about adding the socket to static list 
+					ChatServer.connections.add(socket);
+					
+					}
+				
+				else{
+					message = username + ": " + message;
+					ChatServer.messages.add(message);
+
+
+
+				
+
 			}
 
 
 
-			
+			}
 		}
 	    //Read in a line representing the username
 	    //Set the username field
