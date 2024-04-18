@@ -14,6 +14,7 @@ public class ServerOutputThread extends Thread{
 			for(Socket socket : ChatServer.connections){
 				PrintWriter serverOut = new PrintWriter(socket.getOutputStream());
 				serverOut.println(message);
+				System.out.println(message);
 			}
 			//Continually loop through all messages
 			//If queue is not empty then pop message off the queue

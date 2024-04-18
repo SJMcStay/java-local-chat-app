@@ -14,7 +14,7 @@ public class ServerInputThread extends Thread{
 	try{
 		Boolean firstMessage = true;
 		BufferedReader clientReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-		while (!socket.isClosed()) {
+		while (true) {
 			String message = clientReader.readLine() ;
 			if (message != null) {
 				if(firstMessage){

@@ -30,6 +30,7 @@ public class ChatClient{
         Scanner userInput = new Scanner(System.in);
         boolean firstMessage = true;
         while (firstMessage) {
+            System.out.println("ChatCLient firstMessage loop running");
             String input = userInput.nextLine();
             if (input != null) {
                 clientOut.print(input);
@@ -40,21 +41,25 @@ public class ChatClient{
 
 	    //Send username string to server
 	    //Fire up a ClientReceiver thread -- did not yet do this 
+
+
+        //BREAKS CODE AND GETS STUCK
         ClientReceiver clientReceiver = new ClientReceiver(clientIn);
-        clientReceiver.run();
+        clientReceiver.start();
 
-	    while (clientSocket.isConnected()) {
-            // might need to change to while lopp to print old messages 
 
-            
+
+            while (true) {
+                System.out.println("ChatCLient True loop running");
+                String clientInput = userInput.nextLine();
+                if (clientInput != null) {
+                        clientOut.print(clientInput);
+
+
+                }
+        
+        
             }
-
-            // write section
-            String clientInput = userInput.nextLine();
-            if (clientInput != null) {
-                    clientOut.print(clientInput);
-            }
-        userInput.close();
         } catch (Exception e) {
             System.err.println("ChatClient: " + e);
             System.exit(1);

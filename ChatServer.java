@@ -17,12 +17,12 @@ public class ChatServer{
 			serverSocket.bind(null);
 			System.out.println("IP Address: "+ serverSocket.getInetAddress());
 			System.out.println("Port: " + serverSocket.getLocalPort());
-			while (!serverSocket.isClosed()) {
+			while (true) {
 				Socket clientSocket = serverSocket.accept();
 				ServerInputThread inputThread = new ServerInputThread(clientSocket);
-				inputThread.run();
+				inputThread.start();
 				ServerOutputThread out = new ServerOutputThread();
-				out.run();
+				out.start();
 			}
 		//construct a while loop to continually accept sockets
 	    }catch(Exception e){
