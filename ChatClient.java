@@ -4,6 +4,8 @@ import java.util.Scanner;
 import java.lang.Thread;
 import java.net.*;
 import java.io.*;
+@SuppressWarnings("unused")
+
 public class ChatClient{
     // SHOULD BE DONE IF NO LINKED LIST IMPLEMNT NEEDED
     
@@ -52,6 +54,7 @@ public class ChatClient{
             if (clientInput != null) {
                     clientOut.print(clientInput);
             }
+        userInput.close();
         } catch (Exception e) {
             System.err.println("ChatClient: " + e);
             System.exit(1);

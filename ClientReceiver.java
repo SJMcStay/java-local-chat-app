@@ -3,6 +3,8 @@ import java.util.LinkedList;
 import java.lang.Thread;
 import java.net.*;
 import java.io.*;
+@SuppressWarnings("unused")
+
 public class ClientReceiver extends Thread{
     // SHOULD BE DONE IF NO LINKED LIST IMPLEMNT NEEDED
 

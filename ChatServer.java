@@ -3,6 +3,8 @@ import java.util.LinkedList;
 import java.lang.Thread;
 import java.net.*;
 import java.io.*;
+@SuppressWarnings("unused")
+
 public class ChatServer{
     public static volatile ArrayList<Socket> connections = new ArrayList<>();
     public static volatile LinkedList<String> messages = new LinkedList<>();
@@ -10,9 +12,6 @@ public class ChatServer{
     public static void main(String[] args){
 	try{
 	    //Fire up a ServerOutputThread ***** is this right????
-		ServerOutputThread out = new ServerOutputThread();
-		out.run();
-
 
 	    try(ServerSocket serverSocket = new ServerSocket()){
 			serverSocket.bind(null);
@@ -22,6 +21,8 @@ public class ChatServer{
 				Socket clientSocket = serverSocket.accept();
 				ServerInputThread inputThread = new ServerInputThread(clientSocket);
 				inputThread.run();
+				ServerOutputThread out = new ServerOutputThread();
+				out.run();
 			}
 		//construct a while loop to continually accept sockets
 	    }catch(Exception e){
