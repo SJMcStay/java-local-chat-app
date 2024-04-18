@@ -15,8 +15,10 @@ public class ClientReceiver extends Thread{
 	    try{
 			Thread.sleep(100);
 		    String message;
-			if((message = clientReader.readLine())!= null){
-				System.out.println(message);
+			if(clientReader.ready()){
+				if((message = clientReader.readLine())!= null){
+					System.out.println(message);
+				}
 			}
 	        //Sleep for 100 miliseconds if message is null
 	    }catch(Exception e){

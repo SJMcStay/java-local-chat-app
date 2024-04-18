@@ -43,7 +43,7 @@ public class ChatClient{
 	    //Fire up a ClientReceiver thread -- did not yet do this 
 
 
-        //BREAKS CODE AND GETS STUCK
+
         ClientReceiver clientReceiver = new ClientReceiver(clientIn);
         clientReceiver.start();
 
@@ -52,11 +52,8 @@ public class ChatClient{
             while (true) {
                 System.out.println("ChatCLient True loop running");
                 String clientInput = userInput.nextLine();
-                if (clientInput != null) {
-                        clientOut.print(clientInput);
+                clientOut.print(clientInput);
 
-
-                }
         
         
             }
