@@ -13,32 +13,24 @@ public class ServerInputThread extends Thread{
     public void run(){
 	try{
 		Boolean firstMessage = true;
-		BufferedReader clientReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-		while (true) {
-			String message = clientReader.readLine() ;
-			if (message != null) {
+		BufferedReader clientReader = new BufferedReader(new InputStreamReader(this.socket.getInputStream()));
+
+		String message;
+		while (( message = clientReader.readLine())!= null) {
 				if(firstMessage){
-					username = message;
+
+					this.username = message;
 					firstMessage = false;
-					// something about adding the socket to static list 
-					ChatServer.connections.add(socket);
-					
+					ChatServer.connections.add(socket);	
 					}
 				
 				else{
-					message = username + ": " + message;
+					message = this.username + ": " + message;
 					ChatServer.messages.add(message);
-
-
-
-				
-
-			}
-
-
-
-			}
+				}
+			
 		}
+		
 	    //Read in a line representing the username
 	    //Set the username field
 	    //Add a new socket to the static connection list
@@ -53,7 +45,7 @@ public class ServerInputThread extends Thread{
 
     public ServerInputThread(Socket clientSocket){
 	try{
-		socket = clientSocket;
+		this.socket = clientSocket;
 
 
 	    

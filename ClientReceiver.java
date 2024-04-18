@@ -6,11 +6,12 @@ import java.io.*;
 @SuppressWarnings("unused")
 
 public class ClientReceiver extends Thread{
-    // SHOULD BE DONE IF NO LINKED LIST IMPLEMNT NEEDED
+
 
 
 	private BufferedReader clientReader;
     public void run(){
+		//TODO: fix true loop
 	while(true){
 	    try{
 			Thread.sleep(100);

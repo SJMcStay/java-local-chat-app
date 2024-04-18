@@ -11,7 +11,6 @@ public class ChatServer{
 
     public static void main(String[] args){
 	try{
-	    //Fire up a ServerOutputThread ***** is this right????
 
 	    try(ServerSocket serverSocket = new ServerSocket()){
 			serverSocket.bind(null);
@@ -19,10 +18,13 @@ public class ChatServer{
 			System.out.println("Port: " + serverSocket.getLocalPort());
 			while (true) {
 				Socket clientSocket = serverSocket.accept();
+
 				ServerInputThread inputThread = new ServerInputThread(clientSocket);
-				inputThread.start();
 				ServerOutputThread out = new ServerOutputThread();
+				inputThread.start();
 				out.start();
+
+
 			}
 		//construct a while loop to continually accept sockets
 	    }catch(Exception e){

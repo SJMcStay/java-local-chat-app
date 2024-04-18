@@ -29,34 +29,19 @@ public class ChatClient{
 	    //Read in username from terminal
         Scanner userInput = new Scanner(System.in);
         boolean firstMessage = true;
-        while (firstMessage) {
-            System.out.println("ChatCLient firstMessage loop running");
-            String input = userInput.nextLine();
-            if (input != null) {
-                clientOut.print(input);
-                firstMessage = false;
-            }
-        }
-
-
-	    //Send username string to server
-	    //Fire up a ClientReceiver thread -- did not yet do this 
-
-
 
         ClientReceiver clientReceiver = new ClientReceiver(clientIn);
         clientReceiver.start();
 
 
 
-            while (true) {
-                System.out.println("ChatCLient True loop running");
-                String clientInput = userInput.nextLine();
-                clientOut.print(clientInput);
+            while (!clientSocket.isClosed()) {
 
-        
-        
+                String clientInput = userInput.nextLine();
+                clientOut.println(clientInput);
+                clientOut.flush();
             }
+            userInput.close();
         } catch (Exception e) {
             System.err.println("ChatClient: " + e);
             System.exit(1);
