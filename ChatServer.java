@@ -11,9 +11,8 @@ public class ChatServer{
 
     public static void main(String[] args){
 	try{
-
-	    try(ServerSocket serverSocket = new ServerSocket()){
-			serverSocket.bind(null);
+	    try(ServerSocket serverSocket = new ServerSocket(0,0, InetAddress.getByName(args[0]))){
+			//serverSocket.bind(null);
 			System.out.println("IP Address: "+ serverSocket.getInetAddress());
 			System.out.println("Port: " + serverSocket.getLocalPort());
 			while (true) {
@@ -36,3 +35,4 @@ public class ChatServer{
     }
 
 }
+//172.18.254.145
