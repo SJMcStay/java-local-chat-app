@@ -27,11 +27,8 @@ public class ServerInputThread extends Thread{
 					message = clientReader.readLine();
 					this.color = colorSelector(message);
 					ChatServer.connections.add(socket);	
+					ChatServer.messages.add("|-----Server: " + this.username + " has connected-----|");
 					}
-				else if(message.equals("q!")){
-					message = "|-----User: "+ this.username + " has disconnected-----|";
-					ChatServer.messages.add(message);
-				}
 				else{
 					message = this.color + this.username + ": " + ANSI_RESET + message;
 					ChatServer.messages.add(message);
@@ -40,6 +37,9 @@ public class ServerInputThread extends Thread{
 			
 		}
 		// could break code
+		message = "|-----Server: "+ this.username + " has disconnected-----|";
+		ChatServer.messages.add(message);
+
 		ChatServer.connections.remove(this.socket);
 		
 	    //Read in a line representing the username

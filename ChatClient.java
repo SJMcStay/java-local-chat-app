@@ -47,13 +47,14 @@ public class ChatClient{
                 clientOut.println(clientInput);
                 clientOut.flush();
                 numtime += 1;
-                if(clientInput.equals("q!\n")){
+                if(clientInput.equals("q!")){
                     System.out.println("quit thingy runs");
+                    System.exit(0);
                     clientSocket.close();
                 }
             }
             userInput.close();
-            System.exit(0);
+            
         } catch (Exception e) {
             System.err.println("ChatClient: " + e);
             System.exit(1);
