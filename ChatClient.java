@@ -33,13 +33,19 @@ public class ChatClient{
         ClientReceiver clientReceiver = new ClientReceiver(clientIn);
         clientReceiver.start();
 
-
+            int numtime = 1;
 
             while (!clientSocket.isClosed()) {
-
+                if (numtime ==1) {
+                    System.out.println("Please enter a username");
+                }
+                else if (numtime == 2) {
+                    System.out.println("Select a username color b: Blue, r: Red, y: Yellow, g: Green");
+                }
                 String clientInput = userInput.nextLine();
                 clientOut.println(clientInput);
                 clientOut.flush();
+                numtime += 1;
             }
             userInput.close();
         } catch (Exception e) {
