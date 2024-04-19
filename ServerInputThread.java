@@ -28,11 +28,15 @@ public class ServerInputThread extends Thread{
 					this.color = colorSelector(message);
 					ChatServer.connections.add(socket);	
 					}
-				
+				else if(message.equals("q!")){
+					message = "|-----User: "+ this.username + " has disconnected-----|";
+					ChatServer.messages.add(message);
+				}
 				else{
 					message = this.color + this.username + ": " + ANSI_RESET + message;
 					ChatServer.messages.add(message);
 				}
+				
 			
 		}
 		// could break code

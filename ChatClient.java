@@ -43,11 +43,17 @@ public class ChatClient{
                     System.out.println("Select a username color b: Blue, r: Red, y: Yellow, g: Green");
                 }
                 String clientInput = userInput.nextLine();
+
                 clientOut.println(clientInput);
                 clientOut.flush();
                 numtime += 1;
+                if(clientInput.equals("q!\n")){
+                    System.out.println("quit thingy runs");
+                    clientSocket.close();
+                }
             }
             userInput.close();
+            System.exit(0);
         } catch (Exception e) {
             System.err.println("ChatClient: " + e);
             System.exit(1);
