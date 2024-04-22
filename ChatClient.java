@@ -47,7 +47,7 @@ public class ChatClient{
                 clientOut.println(clientInput);
                 clientOut.flush();
                 numtime += 1;
-                if(clientInput.equals("q!")){
+                if(clientInput.equals("!q")){
                     System.exit(0);
                     clientSocket.close();
                 }
