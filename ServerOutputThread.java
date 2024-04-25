@@ -15,7 +15,6 @@ public class ServerOutputThread extends Thread{
 					PrintWriter serverOut = new PrintWriter(socket.getOutputStream());
 					serverOut.println(message);
 					serverOut.flush();
-					System.out.println(message);
 			}
 			//Continually loop through all messages
 			//If queue is not empty then pop message off the queue
