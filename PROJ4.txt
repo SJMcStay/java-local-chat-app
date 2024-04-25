@@ -11,6 +11,4 @@ Connection and disconnect notifications
     *Server sends out message once a user has joined the room and if one has diconnected 
 
 Commands/hotkeys
-
     * !q - Diconnects User
-    * !
